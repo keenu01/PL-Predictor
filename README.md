@@ -72,7 +72,8 @@ Download and place the dataset CSV file in your local path (update the path in t
 Run your training script:
 
 ```bash 
-python your_training_script.py```
+python your_training_script.py
+```
 
 📁 File Structure
 ```
