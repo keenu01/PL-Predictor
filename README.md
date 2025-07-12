@@ -1,108 +1,88 @@
-# 🧠 KMNIST CNN Classifier
+# Football Match Outcome Prediction
 
-A simple convolutional neural network built with PyTorch to classify Japanese Hiragana characters from the KMNIST dataset. This project demonstrates basic image classification on a non-Latin dataset using a custom CNN.
-
----
-
-## 📌 Project Overview
-
-- 🔤 10-class classification task (Hiragana characters)  
-- 📈 Trained with PyTorch on CPU  
-- 🧪 Evaluates accuracy and visualizes correct vs. incorrect predictions  
-- 🖼️ Uses Matplotlib to plot prediction results
+This project builds a binary classifier to predict football match results (Home Win or Not) using match statistics and metadata. The model is implemented with PyTorch and trained on a real-world dataset.
 
 ---
 
-## 🧱 Model Summary
+## 🧾 Dataset
 
-The CNN model is defined in `model.py` and includes:
-
-- 5 convolutional layers with ReLU activation  
-- Max pooling after each conv layer  
-- Fully connected layers with ReLU  
-- `nn.LazyLinear` used for dynamic input sizing
-
-Example:
-
-```python
-model = CNN(input_layer=1, hidden_layer=200, output_layer=10)
-```
-
----
-
-## 🧪 Example Output
-
-After training, a 5×5 grid shows predictions:
-
-- ✅ Green titles: Correct predictions  
-- ❌ Red titles: Incorrect predictions
-
-Make sure to save your output in `images/sample_output.png` if you'd like it rendered here.
-
-![Prediction Grid](images/sample_output.png)
+- Dataset file: `2021-2022.csv`
+- Features used:
+  - Division (`Div`)
+  - Home Team (`HomeTeam`)
+  - Away Team (`AwayTeam`)
+  - Home Shots on Target (`HST`)
+  - Home Shots (`HS`)
+  - Away Shots on Target (`AST`)
+  - Away Shots (`AS`)
+  - Home Corners (`HC`)
+  - Away Corners (`AC`)
+  - Referee (`Referee`)
+- Target:
+  - Full Time Result (`FTR`), converted to a binary label: Home Win = 1, else 0
 
 ---
 
-## 🚀 Getting Started
+## 🔧 Data Preprocessing
 
-### 1. Clone this repository
+- Categorical features are label-encoded to convert text labels to numeric.
+- Missing values are imputed using the mean strategy.
+- Dataset is split into train/test sets (80/20).
+- Features and targets are converted to PyTorch tensors.
+
+---
+
+## 🧠 Model Architecture
+
+- Fully connected feed-forward neural network using PyTorch.
+- 4 hidden layers, each with ReLU activation.
+- Output layer uses Sigmoid activation for binary classification.
+- Model input size equals number of features (10 in this case).
+- Output size is 1 (probability of Home Win).
+
+---
+
+## ⚙️ Training Details
+
+- Loss function: Binary Cross Entropy Loss (`BCELoss`)
+- Optimizer: Adam with learning rate 0.001
+- Training epochs: 100
+- Accuracy calculated during training every 100 epochs.
+
+---
+
+## 📈 Evaluation
+
+- After training, the model is evaluated on the test set.
+- Metrics:
+  - Test loss
+  - Test accuracy
+
+---
+
+## 🚀 How to Run
+
+1. Install dependencies
 
 ```bash
-git clone https://github.com/your-username/kmnist-cnn-classifier.git
-cd kmnist-cnn-classifier
-```
+pip install torch pandas scikit-learn
 
-### 2. Install requirements
+    Download and place the dataset CSV file in your local path (update the path in the script).
 
-```bash
-pip install -r requirements.txt
-```
+    Run your training script:
 
-On Windows, if you encounter SSL certificate issues with KMNIST, add this in your code:
+python your_training_script.py
 
-```python
-import ssl
-ssl._create_default_https_context = ssl._create_unverified_context
-```
+📁 File Structure
 
-### 3. Run training
+├── model.py            # Neural network definition (NeuralNetwork class)
+├── train.py            # Training and evaluation script (your main code)
+├── 2021-2022.csv       # Dataset file (not included here)
+└── README.md           # This file
 
-```bash
-python main.py
-```
+🧑‍💻 Credits
 
----
+Created by [Your Name]. Based on PyTorch and scikit-learn for preprocessing.
+📜 License
 
-## 🧾 Requirements
-
-Listed in `requirements.txt`:
-
-- torch>=2.0.0  
-- torchvision>=0.15.0  
-- matplotlib>=3.5.0
-
----
-
-## 📁 Project Structure
-
-```
-├── main.py              # Training and evaluation loop  
-├── model.py             # CNN model definition  
-├── images/              # (Optional) folder for output plots  
-├── data/                # Auto-downloaded KMNIST dataset  
-├── requirements.txt     # Package dependencies  
-└── README.md
-```
-
----
-
-## 🧠 Credits
-
-- KMNIST dataset from ROIS-DS Center for Open Data in the Humanities  
-- Built using PyTorch and Matplotlib
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License.
+MIT License
