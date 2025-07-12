@@ -69,4 +69,4 @@ This project builds a binary classifier to predict football match results (Home 
 1. Install dependencies
 
 ```bash
-pip install torch pa
+pip install torch pandas scikit-learn
