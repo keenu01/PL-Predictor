@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg" alt="Premier League Logo" width="150"/>
+</p>
+
 # Football Match Outcome Prediction
 
 This project builds a binary classifier to predict football match results (Home Win or Not) using match statistics and metadata. The model is implemented with PyTorch and trained on a real-world dataset.
@@ -65,26 +69,4 @@ This project builds a binary classifier to predict football match results (Home 
 1. Install dependencies
 
 ```bash
-pip install torch pandas scikit-learn
-```
-Download and place the dataset CSV file in your local path (update the path in the script).
-
-Run your training script:
-
-```bash 
-python your_training_script.py
-```
-
-📁 File Structure
-```
-├── model.py            # Neural network definition (NeuralNetwork class)
-├── train.py            # Training and evaluation script (your main code)
-├── 2021-2022.csv       # Dataset file (not included here)
-└── README.md           # This file
-```
-🧑‍💻 Credits
-gob
-
-📜 License
-
-MIT License
+pip install torch pa
