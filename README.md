@@ -66,23 +66,23 @@ This project builds a binary classifier to predict football match results (Home 
 
 ```bash
 pip install torch pandas scikit-learn
+```
+Download and place the dataset CSV file in your local path (update the path in the script).
 
-    Download and place the dataset CSV file in your local path (update the path in the script).
+Run your training script:
 
-    Run your training script:
-
-python your_training_script.py
+``python your_training_script.py``
 
 📁 File Structure
-
+```
 ├── model.py            # Neural network definition (NeuralNetwork class)
 ├── train.py            # Training and evaluation script (your main code)
 ├── 2021-2022.csv       # Dataset file (not included here)
 └── README.md           # This file
-
+```
 🧑‍💻 Credits
+gob
 
-Created by [Your Name]. Based on PyTorch and scikit-learn for preprocessing.
 📜 License
 
 MIT License
